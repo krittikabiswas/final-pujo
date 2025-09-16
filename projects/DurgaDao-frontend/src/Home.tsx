@@ -112,12 +112,12 @@ const handleDonate = async () => {
 
   // --- UI ---
   return (
-    <div className="hero min-h-screen bg-teal-400">
+    <div className="hero min-h-screen bg-black-400">
       <div className="hero-content text-center rounded-lg p-8 bg-white shadow-lg">
         <div>
-          <h1 className="text-5xl font-bold text-gray-800">Welcome to the Anjoli DAO</h1>
+          <h1 className="text-5xl font-bold text-gray-800">Welcome to the Onjoli Dan</h1>
           <p className="py-6 text-xl">
-            Donate ALGO to participate in the festival and receive ANJ governance tokens.
+            Donate ALGO to participate in the festival and receive ONJ tokens.
           </p>
 
           {!activeAddress && (
