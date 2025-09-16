@@ -110,61 +110,75 @@ const handleDonate = async () => {
 }
 
 
-  // --- UI ---
-  return (
-    <div className="hero min-h-screen bg-black-400">
-      <div className="hero-content text-center rounded-lg p-8 bg-white shadow-lg">
-        <div>
-          <h1 className="text-5xl font-bold text-gray-800">Welcome to the Onjoli Dan</h1>
-          <p className="py-6 text-xl">
-            Donate ALGO to participate in the festival and receive ONJ tokens.
-          </p>
+ // --- UI ---
+return (
+  <div className="hero min-h-screen">
+    {/* Sticky Top Nav */}
+    <div className="nav-bar">
+      <h2>🌸 Onjoli Dan Festival</h2>
+    </div>
 
-          {!activeAddress && (
-            <button className="btn btn-primary m-2" onClick={toggleWalletModal}>
-              Connect Wallet (Testnet)
-            </button>
-          )}
+    {/* Hero Content - Split Layout */}
+    <div className="hero-content">
+      {/* Left Side - Festival Intro */}
+      <div className="hero-left">
+        <h1>
+          Welcome to <span>Onjoli Dan</span>
+        </h1>
+        <p>
+          Join the celebration of giving! Donate <span className="highlight">ALGO</span> and receive{" "}
+          <span className="highlight-alt">ONJ tokens</span> as a token of gratitude.
+        </p>
+        <p className="cta-text">✨ Be part of the digital festival of joy & generosity ✨</p>
+      </div>
 
-          {activeAddress && (
-            <>
-              <div className="mb-4 text-sm text-gray-600">
-                Connected: {activeAddress.slice(0, 8)}...{activeAddress.slice(-6)}
-              </div>
-              <div className="mt-4">
-                <input
-                  type="number"
-                  placeholder="Amount in ALGO"
-                  className="input input-bordered w-full max-w-xs"
-                  value={donationAmount || ''}
-                  onChange={(e) => setDonationAmount(Number(e.target.value))}
-                  min="0"
-                  step="0.001"
-                />
-              </div>
-              <div className="mt-4 flex gap-2 justify-center">
-                <button
-                  className="btn btn-secondary"
-                  onClick={handleOptIn}
-                >
-                  Opt-In to ANJ
-                </button>
-                <button
-                  className="btn btn-primary"
-                  onClick={handleDonate}
-                  disabled={donationAmount <= 0}
-                >
-                  Donate {donationAmount > 0 ? `${donationAmount} ALGO` : ''}
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+      {/* Right Side - Donation Card */}
+      <div className="donation-card">
+        {!activeAddress && (
+          <button className="btn btn-primary animate-pulse" onClick={toggleWalletModal}>
+            🚀 Connect Wallet (Testnet)
+          </button>
+        )}
+
+        {activeAddress && (
+          <>
+            <div className="connected-text">
+              ✅ Connected: {activeAddress.slice(0, 8)}...{activeAddress.slice(-6)}
+            </div>
+
+            <div className="mt-4">
+              <input
+                type="number"
+                placeholder="Enter ALGO Amount"
+                className="input input-bordered w-full max-w-xs"
+                value={donationAmount || ""}
+                onChange={(e) => setDonationAmount(Number(e.target.value))}
+                min="0"
+                step="0.001"
+              />
+            </div>
+
+            <div className="mt-6 flex gap-4 justify-center flex-wrap">
+              <button className="btn btn-secondary" onClick={handleOptIn}>
+                ✨ Opt-In to ANJ
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={handleDonate}
+                disabled={donationAmount <= 0}
+              >
+                💰 Donate {donationAmount > 0 ? `${donationAmount} ALGO` : ""}
+              </button>
+            </div>
+          </>
+        )}
 
         <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
       </div>
     </div>
-  )
+  </div>
+)
 }
+
 
 export default Home
