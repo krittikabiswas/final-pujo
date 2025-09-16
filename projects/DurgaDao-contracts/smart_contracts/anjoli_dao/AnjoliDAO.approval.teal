@@ -1,0 +1,273 @@
+#pragma version 10
+#pragma typetrack false
+
+// smart_contracts.anjoli_dao.contract.AnjoliDAO.__algopy_entrypoint_with_init() -> uint64:
+main:
+    intcblock 0 1 10000000 3
+    bytecblock "token_id" "ANJ" "Anjoli Token"
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/anjoli_dao/contract.py:12-13
+    // # stored ASA id (0 means "not created yet")
+    // self.token_id: algopy.UInt64 = algopy.UInt64(0)
+    bytec_0 // "token_id"
+    intc_0 // 0
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/anjoli_dao/contract.py:4
+    // class AnjoliDAO(algopy.ARC4Contract):
+    txn NumAppArgs
+    bz main_after_if_else@8
+    pushbytess 0x4c5c61ba 0xbc0ff9f7 0x5ba22a84 // method "create()void", method "donate()void", method "get_asset_id()uint64"
+    txna ApplicationArgs 0
+    match main_create_route@5 main_donate_route@6 main_get_asset_id_route@7
+
+main_after_if_else@8:
+    // smart_contracts/anjoli_dao/contract.py:4
+    // class AnjoliDAO(algopy.ARC4Contract):
+    intc_0 // 0
+    return
+
+main_get_asset_id_route@7:
+    // smart_contracts/anjoli_dao/contract.py:73
+    // @algopy.arc4.abimethod(readonly=True)
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub get_asset_id
+    itob
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_donate_route@6:
+    // smart_contracts/anjoli_dao/contract.py:46
+    // @algopy.arc4.abimethod
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub donate
+    intc_1 // 1
+    return
+
+main_create_route@5:
+    // smart_contracts/anjoli_dao/contract.py:15-16
+    // # Allow this method to be used for app creation (create="allow")
+    // @algopy.arc4.abimethod(create="allow")
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    callsub create
+    intc_1 // 1
+    return
+
+
+// smart_contracts.anjoli_dao.contract.AnjoliDAO.create() -> void:
+create:
+    // smart_contracts/anjoli_dao/contract.py:22-31
+    // # first submit
+    // algopy.itxn.AssetConfig(
+    //     asset_name="Anjoli Token",
+    //     unit_name="ANJ",
+    //     total=algopy.UInt64(10_000_000),
+    //     decimals=algopy.UInt64(0),
+    //     manager=algopy.Global.current_application_address,
+    //     reserve=algopy.Global.current_application_address,
+    //     fee=algopy.UInt64(0),
+    // ).submit()
+    itxn_begin
+    // smart_contracts/anjoli_dao/contract.py:28
+    // manager=algopy.Global.current_application_address,
+    global CurrentApplicationAddress
+    // smart_contracts/anjoli_dao/contract.py:29
+    // reserve=algopy.Global.current_application_address,
+    dup
+    itxn_field ConfigAssetReserve
+    itxn_field ConfigAssetManager
+    // smart_contracts/anjoli_dao/contract.py:27
+    // decimals=algopy.UInt64(0),
+    intc_0 // 0
+    itxn_field ConfigAssetDecimals
+    // smart_contracts/anjoli_dao/contract.py:26
+    // total=algopy.UInt64(10_000_000),
+    intc_2 // 10000000
+    itxn_field ConfigAssetTotal
+    // smart_contracts/anjoli_dao/contract.py:25
+    // unit_name="ANJ",
+    bytec_1 // "ANJ"
+    itxn_field ConfigAssetUnitName
+    // smart_contracts/anjoli_dao/contract.py:24
+    // asset_name="Anjoli Token",
+    bytec_2 // "Anjoli Token"
+    itxn_field ConfigAssetName
+    // smart_contracts/anjoli_dao/contract.py:22-23
+    // # first submit
+    // algopy.itxn.AssetConfig(
+    intc_3 // acfg
+    itxn_field TypeEnum
+    // smart_contracts/anjoli_dao/contract.py:30
+    // fee=algopy.UInt64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/anjoli_dao/contract.py:22-31
+    // # first submit
+    // algopy.itxn.AssetConfig(
+    //     asset_name="Anjoli Token",
+    //     unit_name="ANJ",
+    //     total=algopy.UInt64(10_000_000),
+    //     decimals=algopy.UInt64(0),
+    //     manager=algopy.Global.current_application_address,
+    //     reserve=algopy.Global.current_application_address,
+    //     fee=algopy.UInt64(0),
+    // ).submit()
+    itxn_submit
+    // smart_contracts/anjoli_dao/contract.py:33-42
+    // # second submit (kept exactly as you had)
+    // result = algopy.itxn.AssetConfig(
+    //     asset_name="Anjoli Token",
+    //     unit_name="ANJ",
+    //     total=algopy.UInt64(10_000_000),
+    //     decimals=algopy.UInt64(0),
+    //     manager=algopy.Global.current_application_address,
+    //     reserve=algopy.Global.current_application_address,
+    //     fee=algopy.UInt64(0),
+    // ).submit()
+    itxn_begin
+    // smart_contracts/anjoli_dao/contract.py:39
+    // manager=algopy.Global.current_application_address,
+    global CurrentApplicationAddress
+    // smart_contracts/anjoli_dao/contract.py:40
+    // reserve=algopy.Global.current_application_address,
+    dup
+    itxn_field ConfigAssetReserve
+    itxn_field ConfigAssetManager
+    // smart_contracts/anjoli_dao/contract.py:38
+    // decimals=algopy.UInt64(0),
+    intc_0 // 0
+    itxn_field ConfigAssetDecimals
+    // smart_contracts/anjoli_dao/contract.py:37
+    // total=algopy.UInt64(10_000_000),
+    intc_2 // 10000000
+    itxn_field ConfigAssetTotal
+    // smart_contracts/anjoli_dao/contract.py:36
+    // unit_name="ANJ",
+    bytec_1 // "ANJ"
+    itxn_field ConfigAssetUnitName
+    // smart_contracts/anjoli_dao/contract.py:35
+    // asset_name="Anjoli Token",
+    bytec_2 // "Anjoli Token"
+    itxn_field ConfigAssetName
+    // smart_contracts/anjoli_dao/contract.py:33-34
+    // # second submit (kept exactly as you had)
+    // result = algopy.itxn.AssetConfig(
+    intc_3 // acfg
+    itxn_field TypeEnum
+    // smart_contracts/anjoli_dao/contract.py:41
+    // fee=algopy.UInt64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/anjoli_dao/contract.py:33-42
+    // # second submit (kept exactly as you had)
+    // result = algopy.itxn.AssetConfig(
+    //     asset_name="Anjoli Token",
+    //     unit_name="ANJ",
+    //     total=algopy.UInt64(10_000_000),
+    //     decimals=algopy.UInt64(0),
+    //     manager=algopy.Global.current_application_address,
+    //     reserve=algopy.Global.current_application_address,
+    //     fee=algopy.UInt64(0),
+    // ).submit()
+    itxn_submit
+    // smart_contracts/anjoli_dao/contract.py:44
+    // self.token_id = result.created_asset.id
+    bytec_0 // "token_id"
+    itxn CreatedAssetID
+    app_global_put
+    retsub
+
+
+// smart_contracts.anjoli_dao.contract.AnjoliDAO.donate() -> void:
+donate:
+    // smart_contracts/anjoli_dao/contract.py:51
+    // assert self.token_id != algopy.UInt64(0)
+    intc_0 // 0
+    bytec_0 // "token_id"
+    app_global_get_ex
+    assert // check self.token_id exists
+    dup
+    assert
+    // smart_contracts/anjoli_dao/contract.py:53-54
+    // # sender is Txn.sender, amount is Txn.amount
+    // donor = algopy.Txn.sender
+    txn Sender
+    // smart_contracts/anjoli_dao/contract.py:55
+    // amount = algopy.Txn.amount
+    txn Amount
+    // smart_contracts/anjoli_dao/contract.py:56
+    // receiver = algopy.Txn.receiver
+    txn Receiver
+    // smart_contracts/anjoli_dao/contract.py:58-59
+    // # make sure payment is to app
+    // assert receiver == algopy.Global.current_application_address, "payment must be to app address"
+    global CurrentApplicationAddress
+    ==
+    assert // payment must be to app address
+    // smart_contracts/anjoli_dao/contract.py:61-62
+    // # Price ratio: 1 ALGO (1_000_000) -> 10 ANJ
+    // tokens_to_send = amount // algopy.UInt64(100_000)
+    pushint 100000 // 100000
+    /
+    // smart_contracts/anjoli_dao/contract.py:63
+    // assert tokens_to_send != algopy.UInt64(0), "donation too small for any ANJ"
+    dup
+    assert // donation too small for any ANJ
+    // smart_contracts/anjoli_dao/contract.py:65-71
+    // # send back ANJ
+    // algopy.itxn.AssetTransfer(
+    //     xfer_asset=self.token_id,
+    //     asset_receiver=donor,
+    //     asset_amount=tokens_to_send,
+    //     fee=algopy.UInt64(0),
+    // ).submit()
+    itxn_begin
+    itxn_field AssetAmount
+    itxn_field AssetReceiver
+    itxn_field XferAsset
+    // smart_contracts/anjoli_dao/contract.py:65-66
+    // # send back ANJ
+    // algopy.itxn.AssetTransfer(
+    pushint 4 // axfer
+    itxn_field TypeEnum
+    // smart_contracts/anjoli_dao/contract.py:70
+    // fee=algopy.UInt64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/anjoli_dao/contract.py:65-71
+    // # send back ANJ
+    // algopy.itxn.AssetTransfer(
+    //     xfer_asset=self.token_id,
+    //     asset_receiver=donor,
+    //     asset_amount=tokens_to_send,
+    //     fee=algopy.UInt64(0),
+    // ).submit()
+    itxn_submit
+    retsub
+
+
+// smart_contracts.anjoli_dao.contract.AnjoliDAO.get_asset_id() -> uint64:
+get_asset_id:
+    // smart_contracts/anjoli_dao/contract.py:76
+    // return self.token_id
+    intc_0 // 0
+    bytec_0 // "token_id"
+    app_global_get_ex
+    assert // check self.token_id exists
+    retsub
