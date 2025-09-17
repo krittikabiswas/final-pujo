@@ -4,6 +4,8 @@
 
 **Anjali   Dao** is a decentralized application (dApp) built on the **Algorand blockchain** 🟢✨ that brings **transparency, democracy, and community participation** to the management of Durga Puja festivities.
 
+**Anjali DAO Testnet application ID: 745892582**
+
 It functions as a **Decentralized Autonomous Organization (DAO)** 🤝, allowing community members to:
 ✅ Propose ideas 💡
 ✅ Vote on them 🗳️
