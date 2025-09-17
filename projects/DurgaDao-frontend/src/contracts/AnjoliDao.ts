@@ -224,7 +224,7 @@ export abstract class AnjoliDaoParamsFactory {
    * @param params Parameters for the call
    * @returns An `AppClientMethodCallParams` object for the call
    */
-  static create(params: CallParams<AnjoliDaoArgs['obj']['create()void'] | AnjoliDaoArgs['tuple']['create()void']> & CallOnComplete): AppClientMethodCallParams & CallOnComplete {
+  static create1(params: CallParams<AnjoliDaoArgs['obj']['create()void'] | AnjoliDaoArgs['tuple']['create()void']> & CallOnComplete): AppClientMethodCallParams & CallOnComplete {
     return {
       ...params,
       method: 'create()void' as const,
@@ -283,22 +283,22 @@ export class AnjoliDaoFactory {
       appSpec: APP_SPEC,
     })
   }
-  
+
   /** The name of the app (from the ARC-32 / ARC-56 app spec or override). */
   public get appName() {
     return this.appFactory.appName
   }
-  
+
   /** The ARC-56 app spec being used */
   get appSpec() {
     return APP_SPEC
   }
-  
+
   /** A reference to the underlying `AlgorandClient` this app factory is using. */
   public get algorand(): AlgorandClient {
     return this.appFactory.algorand
   }
-  
+
   /**
    * Returns a new `AppClient` client for an app instance of the given ID.
    *
@@ -310,7 +310,7 @@ export class AnjoliDaoFactory {
   public getAppClientById(params: AppFactoryAppClientParams) {
     return new AnjoliDaoClient(this.appFactory.getAppClientById(params))
   }
-  
+
   /**
    * Returns a new `AppClient` client, resolving the app by creator address and name
    * using AlgoKit app deployment semantics (i.e. looking for the app creation transaction note).
@@ -444,7 +444,7 @@ export class AnjoliDaoClient {
       appSpec: APP_SPEC,
     })
   }
-  
+
   /**
    * Checks for decode errors on the given return value and maps the return value to the return type for the given method
    * @returns The typed return value or undefined if there was no value
@@ -452,7 +452,7 @@ export class AnjoliDaoClient {
   decodeReturnValue<TSignature extends AnjoliDaoNonVoidMethodSignatures>(method: TSignature, returnValue: ABIReturn | undefined) {
     return returnValue !== undefined ? getArc56ReturnValue<MethodReturn<TSignature>>(returnValue, this.appClient.getABIMethod(method), APP_SPEC.structs) : undefined
   }
-  
+
   /**
    * Returns a new `AnjoliDaoClient` client, resolving the app by creator address and name
    * using AlgoKit app deployment semantics (i.e. looking for the app creation transaction note).
@@ -461,7 +461,7 @@ export class AnjoliDaoClient {
   public static async fromCreatorAndName(params: Omit<ResolveAppClientByCreatorAndName, 'appSpec'>): Promise<AnjoliDaoClient> {
     return new AnjoliDaoClient(await _AppClient.fromCreatorAndName({...params, appSpec: APP_SPEC}))
   }
-  
+
   /**
    * Returns an `AnjoliDaoClient` instance for the current network based on
    * pre-determined network-specific app IDs specified in the ARC-56 app spec.
@@ -474,27 +474,27 @@ export class AnjoliDaoClient {
   ): Promise<AnjoliDaoClient> {
     return new AnjoliDaoClient(await _AppClient.fromNetwork({...params, appSpec: APP_SPEC}))
   }
-  
+
   /** The ID of the app instance this client is linked to. */
   public get appId() {
     return this.appClient.appId
   }
-  
+
   /** The app address of the app instance this client is linked to. */
   public get appAddress() {
     return this.appClient.appAddress
   }
-  
+
   /** The name of the app. */
   public get appName() {
     return this.appClient.appName
   }
-  
+
   /** The ARC-56 app spec being used */
   public get appSpec() {
     return this.appClient.appSpec
   }
-  
+
   /** A reference to the underlying `AlgorandClient` this app client is using. */
   public get algorand(): AlgorandClient {
     return this.appClient.algorand
@@ -525,7 +525,7 @@ export class AnjoliDaoClient {
      * @returns The call params
      */
     create: (params: CallParams<AnjoliDaoArgs['obj']['create()void'] | AnjoliDaoArgs['tuple']['create()void']> & {onComplete?: OnApplicationComplete.NoOpOC} = {args: []}) => {
-      return this.appClient.params.call(AnjoliDaoParamsFactory.create(params))
+      return this.appClient.params.call(AnjoliDaoParamsFactory.create.create(params))
     },
 
     /**
@@ -542,7 +542,7 @@ export class AnjoliDaoClient {
 
     /**
      * Makes a call to the AnjoliDAO smart contract using the `get_asset_id()uint64` ABI method.
-     * 
+     *
      * This method is a readonly method; calling it with onComplete of NoOp will result in a simulated transaction rather than a real transaction.
      *
      * Returns the Asset ID of the token minted by this contract (0 if not yet created).
@@ -581,7 +581,7 @@ export class AnjoliDaoClient {
      * @returns The call transaction
      */
     create: (params: CallParams<AnjoliDaoArgs['obj']['create()void'] | AnjoliDaoArgs['tuple']['create()void']> & {onComplete?: OnApplicationComplete.NoOpOC} = {args: []}) => {
-      return this.appClient.createTransaction.call(AnjoliDaoParamsFactory.create(params))
+      return this.appClient.createTransaction.call(AnjoliDaoParamsFactory.create.create(params))
     },
 
     /**
@@ -598,7 +598,7 @@ export class AnjoliDaoClient {
 
     /**
      * Makes a call to the AnjoliDAO smart contract using the `get_asset_id()uint64` ABI method.
-     * 
+     *
      * This method is a readonly method; calling it with onComplete of NoOp will result in a simulated transaction rather than a real transaction.
      *
      * Returns the Asset ID of the token minted by this contract (0 if not yet created).
@@ -637,7 +637,7 @@ export class AnjoliDaoClient {
      * @returns The call result
      */
     create: async (params: CallParams<AnjoliDaoArgs['obj']['create()void'] | AnjoliDaoArgs['tuple']['create()void']> & SendParams & {onComplete?: OnApplicationComplete.NoOpOC} = {args: []}) => {
-      const result = await this.appClient.send.call(AnjoliDaoParamsFactory.create(params))
+      const result = await this.appClient.send.call(AnjoliDaoParamsFactory.create.create(params))
       return {...result, return: result.return as unknown as (undefined | AnjoliDaoReturns['create()void'])}
     },
 
@@ -656,7 +656,7 @@ export class AnjoliDaoClient {
 
     /**
      * Makes a call to the AnjoliDAO smart contract using the `get_asset_id()uint64` ABI method.
-     * 
+     *
      * This method is a readonly method; calling it with onComplete of NoOp will result in a simulated transaction rather than a real transaction.
      *
      * Returns the Asset ID of the token minted by this contract (0 if not yet created).
@@ -683,7 +683,7 @@ export class AnjoliDaoClient {
 
   /**
    * Makes a readonly (simulated) call to the AnjoliDAO smart contract using the `get_asset_id()uint64` ABI method.
-   * 
+   *
    * This method is a readonly method; calling it with onComplete of NoOp will result in a simulated transaction rather than a real transaction.
    *
    * Returns the Asset ID of the token minted by this contract (0 if not yet created).
