@@ -1,45 +1,128 @@
-# DurgaDao
 
-This starter full stack project has been generated using AlgoKit. See below for default getting started instructions.
+# 🪔 Anjali Dao - Durga Puja DApp for culture, community and transparency on Algorand 🎉
 
-## Setup
 
-### Initial setup
-1. Clone this repository to your local machine.
-2. Ensure [Docker](https://www.docker.com/) is installed and operational. Then, install `AlgoKit` following this [guide](https://github.com/algorandfoundation/algokit-cli#install).
-3. Run `algokit project bootstrap all` in the project directory. This command sets up your environment by installing necessary dependencies, setting up a Python virtual environment, and preparing your `.env` file.
-4. In the case of a smart contract project, execute `algokit generate env-file -a target_network localnet` from the `DurgaDao-contracts` directory to create a `.env.localnet` file with default configuration for `localnet`.
-5. To build your project, execute `algokit project run build`. This compiles your project and prepares it for running.
-6. For project-specific instructions, refer to the READMEs of the child projects:
-   - Smart Contracts: [DurgaDao-contracts](projects/DurgaDao-contracts/README.md)
-   - Frontend Application: [DurgaDao-frontend](projects/DurgaDao-frontend/README.md)
+**Anjali   Dao** is a decentralized application (dApp) built on the **Algorand blockchain** 🟢✨ that brings **transparency, democracy, and community participation** to the management of Durga Puja festivities.
 
-> This project is structured as a monorepo, refer to the [documentation](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md) to learn more about custom command orchestration via `algokit project run`.
+It functions as a **Decentralized Autonomous Organization (DAO)** 🤝, allowing community members to:
+✅ Propose ideas 💡
+✅ Vote on them 🗳️
+✅ Manage funds transparently 💰
 
-### Subsequently
+The vision is simple: **bring the collaborative spirit of community pujo into a modern, digital, and decentralized framework**. 🌐🙏
 
-1. If you update to the latest source code and there are new dependencies, you will need to run `algokit project bootstrap all` again.
-2. Follow step 3 above.
 
-## Tools
 
-This project makes use of Python and React to build Algorand smart contracts and to provide a base project configuration to develop frontends for your Algorand dApps and interactions with smart contracts. The following tools are in use:
+## ✨ Features
 
-- Algorand, AlgoKit, and AlgoKit Utils
-- Python dependencies including Poetry, Black, Ruff or Flake8, mypy, pytest, and pip-audit
-- React and related dependencies including AlgoKit Utils, Tailwind CSS, daisyUI, use-wallet, npm, jest, playwright, Prettier, ESLint, and Github Actions workflows for build validation
+🌸 **Donation System** – Any person can donate Algos for idol selection 🪔, cultural programs 🎶, or budget allocation 📊.
+🗳️ **Decentralized Voting** – Every vote is stored on the blockchain → transparent ✅ tamper-proof 🔒.
+💰 **Transparent Treasury** – All donations (*anjoli*) and expenses are recorded on-chain with full clarity.
+👥 **Community Governance** – True democracy where power lies in the hands of the devotees and community.
 
-### VS Code
 
-It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [backend .vscode](./backend/.vscode) and [frontend .vscode](./frontend/.vscode) folders for more details.
 
-## Integrating with smart contracts and application clients
+## 🏛 Project Architecture
 
-Refer to the [DurgaDao-contracts](projects/DurgaDao-contracts/README.md) folder for overview of working with smart contracts, [projects/DurgaDao-frontend](projects/DurgaDao-frontend/README.md) for overview of the React project and the [projects/DurgaDao-frontend/contracts](projects/DurgaDao-frontend/src/contracts/README.md) folder for README on adding new smart contracts from backend as application clients on your frontend. The templates provided in these folders will help you get started.
-When you compile and generate smart contract artifacts, your frontend component will automatically generate typescript application clients from smart contract artifacts and move them to `frontend/src/contracts` folder, see [`generate:app-clients` in package.json](projects/DurgaDao-frontend/package.json). Afterwards, you are free to import and use them in your frontend application.
+This project is structured as a **monorepo** ⚙️ with two main sub-projects:
 
-The frontend starter also provides an example of interactions with your AnjoliDaoClient in [`AppCalls.tsx`](projects/DurgaDao-frontend/src/components/AppCalls.tsx) component by default.
+1. **DurgaDao-contracts** 📝
 
-## Next Steps
+   * Backend logic (smart contracts).
+   * The contract, named **AnjoliDAO**, is written in **Puya** 🐍✨ (Python dialect → TEAL).
+   * Handles proposal creation, voting, and fund management.
 
-You can take this project and customize it to build your own decentralized applications on Algorand. Make sure to understand how to use AlgoKit and how to write smart contracts for Algorand before you start.
+2. **DurgaDao-frontend** 💻
+
+   * User-facing web app built with **React + TypeScript** ⚡.
+   * Connects with wallets (like **Pera Wallet** 📲).
+   * Interacts with the smart contract on **Algorand TestNet** 🧪.
+
+
+
+## 🚀 Getting Started
+
+Follow these steps to set up and run the project locally 🔧:
+
+### ✅ Prerequisites
+
+🔹 Git – for cloning repo
+🔹 Python ≥ 3.10 🐍
+🔹 Poetry – dependency management 🎭
+🔹 Node.js ≥ 18 ⚡
+🔹 AlgoKit – official Algorand CLI [📖 Installation Guide](https://github.com/algorandfoundation/algokit-cli#install)
+🔹 Algorand Wallet (e.g., **Pera Wallet**) with TestNet ALGOs from [💧 TestNet Dispenser](https://bank.testnet.algorand.network)
+🔹 Algorand SDK 
+
+---
+
+### ⚙️ Installation & Setup
+
+#### 1️⃣ Backend – Smart Contracts
+
+```bash
+# Clone the repository
+git clone https://github.com/krittikabiswas/final-pujo.git
+cd final-pujo/
+
+# Navigate to contracts
+cd projects/DurgaDao-contracts
+
+# Install Python dependencies
+poetry install
+
+# Compile smart contract
+algokit compile contract.py
+
+# Deploy contract to TestNet
+algokit project deploy testnet
+```
+
+👉 Copy the **App ID** that appears after deployment! 🔑
+
+---
+
+#### 2️⃣ Frontend – React dApp
+
+```bash
+# Go to frontend
+cd projects/DurgaDao-frontend
+
+# Install dependencies
+npm install
+
+# If not auto-created, make .env.testnet file and add:
+# VITE_ANJOLI_DAO_APP_ID=YOUR_APP_ID_HERE
+
+# Start development server
+npm run dev
+```
+
+💡 The app will run at **[http://localhost:5173](http://localhost:5173)** 🎉
+
+---
+
+## 💻 How to Use the dApp
+
+1. 🔗 **Connect Wallet** – Link your Pera Wallet (TestNet mode).
+2. 💸 **Donate (Algo)** – Contribute to the treasury directly.
+3. 🪔 **Get Tokens (Anjali)** – Get tokens as rewards for your donation.
+4. 🗳️ **Vote** – Have your say on community decisions.
+5. 💸 **View Balance** – Track your token balance
+
+---
+
+## 🛠 Technology Stack
+
+🔹 Blockchain – **Algorand (TestNet)**
+🔹 Smart Contracts – **Algopy**
+🔹 Framework – **AlgoKit**
+🔹 Frontend – **React + TypeScript + Vite**
+🔹 Styling – **CSS** 🎨
+
+---
+
+## 📜 License
+
+📂 Licensed under the **MIT License**. See LICENSE for details.
+Project made by Team Sondesh at Algorand Hackathon 2025
