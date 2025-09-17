@@ -473,4 +473,5 @@ body {
 }
 #contact {
   z-index: -1;
+  background-image: url('../assets/bg4.png'); /* Optional: subtle background image */
 }

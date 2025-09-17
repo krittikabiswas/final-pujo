@@ -1,4 +1,48 @@
 /* src/components/Voting.css */
+#voting {
+    /* Enhanced Gradient with a more vibrant feel */
+    background-image: linear-gradient(135deg, #0715d9 0%, #f0460d 100%); /* A richer, deeper blue-purple */
+    background-size: 200% 200%; /* Allows for subtle animation */
+    animation: gradientShift 10s ease infinite alternate; /* Smooth, continuous animation */
+
+    border-radius: 15px; /* Softer, modern rounded corners */
+    padding: 30px; /* More internal space */
+    margin: 20px auto; /* Centering with some breathing room */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), /* Deeper shadow for elevation */
+                0 0 60px rgba(78, 59, 148, 0.4); /* Subtle inner glow / aura */
+    color: #ffffff; /* Ensure text is white for contrast */
+    text-align: center; /* Center content */
+    position: relative; /* For potential pseudo-elements or absolute positioning */
+    overflow: hidden; /* Ensures shadows/glows don't spill if elements inside move */
+    transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects */
+}
+
+/* Keyframe animation for the gradient background */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+#voting:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(100, 75, 190, 0.6); /* More pronounced shadow and glow on hover */
+}
+
+/* Optional: Add a subtle overlay for texture or shimmer */
+#voting::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none; /* Allows clicks to pass through */
+    opacity: 0.8;
+}
+
+/* This is a visual representation of the concept. The actual CSS will be applied to your code. */
 .voting-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
