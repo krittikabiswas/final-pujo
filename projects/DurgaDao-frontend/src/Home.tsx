@@ -120,7 +120,7 @@ const Home: React.FC = () => {
       {/* Sticky Nav Bar */}
       <nav className="nav-bar">
         <div className="nav-container">
-          <h2 className="logo">🪔 Subhash Athletic Club</h2>
+          <h2 className="logo">🪔 Sondesh Club</h2>
           <div className="nav-links">
             <a href="#hero">Home</a>
             <a href="#donate">Donate</a>
@@ -136,7 +136,7 @@ const Home: React.FC = () => {
           <h1>
             Welcome to <span className="highlight">Anjali DAO</span>
           </h1>
-          <h3>by SUBHASH ATHLETIC CLUB</h3>
+          <h3>by Sondesh CLUB</h3>
           <p>
             Donate <span className="highlight">ALGO</span> to participate in the festival and receive{" "}
             <span className="highlight-alt">ANJ governance tokens</span>.
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
      <section id="donate" className="section">
   <div className="container">
     {/* The main heading and subheading remain as they were */}
-    <h2 className="section-heading">Join the Celebration</h2>
+    <h2 className="section-heading">JOIN THE CELEBRATION</h2>
     <p className="section-subheading">
       Your contribution is an 'Anjali' (offering) that empowers our community and rewards you with a stake in its future.
     </p>
@@ -212,7 +212,7 @@ const Home: React.FC = () => {
       <section id="contact" className="section">
         <div className="container">
           <div className="contact-card">
-            <h2 className="section-heading">Connect with the Community</h2>
+            <h2 className="section-heading">CONNECT WITH THE COMMUNITY</h2>
             <p className="section-subheading">
               Join the conversation, stay updated, and be a part of our growing digital family.
             </p>
