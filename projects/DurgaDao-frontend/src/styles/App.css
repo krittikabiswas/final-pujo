@@ -1,3 +1,4 @@
+
 /* Global */
 html, body, .main-container {
   margin: 0;
@@ -35,6 +36,7 @@ html, body, .main-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 .logo {
@@ -50,69 +52,98 @@ html, body, .main-container {
   /* Spacing & Shape */
   padding: 0.6rem 1.2rem;
   margin-left: 0.5rem;
-  border-radius: 8px; /* A modern, slightly rounded rectangle */
+  border-radius: 8px;
 
   /* Text & Color */
   color: #d1d5db;
-  background-color: transparent; /* Start with no background */
+  background-color: transparent;
   text-decoration: none;
   font-weight: 500;
 
-  /* Subtle border for a clean, defined look */
-  border: 1px solid rgba(245, 12, 12, 0.25);
+  /* Softer, more neutral border for a subtle look */
+  border: 1px solid rgba(209, 213, 219, 0.2);
 
   /* Smooth Animation */
   transition: all 0.3s ease;
 }
 
-/* --- Hover effect for ALL buttons --- */
+/* A more subtle and beautiful hover effect */
 .nav-links a:hover {
-  background-color: #f0a51a; /* Primary purple fills the button on hover */
-  border-color: #7c3aed;     /* Match border to the new background */
-  color: #6f0404;
-  transform: translateY(-2px); /* Lifts the button slightly */
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4); /* Adds a vibrant glow */
+  /* Brighter text color on hover */
+  color: #ffffff;
+
+  /* A soft, glowing background instead of a harsh solid color */
+  background-color: rgba(240, 165, 26, 0.1);
+
+  /* The border and shadow now use the gold color for a cohesive glow */
+  border-color: rgba(240, 165, 26, 0.4);
+  box-shadow: 0 0 20px rgba(240, 165, 26, 0.2);
+
+  /* A slightly more subtle lift effect */
+  transform: translateY(-1px);
 }
 /* MODIFIED: Hero Section with improved content box */
+/* --- Hero Section with Background Image --- */
 .hero {
-  min-height: 90vh; /* Slightly reduced height */
+  min-height: 100vh;
+  /* Assumes you have a festive background image */
   background: url("../assets/durga.jpg") no-repeat center center/cover;
-  background-attachment: fixed; /* Parallax effect */
+  background-attachment: fixed; /* Creates a nice parallax effect on scroll */
   display: flex;
   align-items: center;
-  text-align: left; /* Switched to left align for a more modern feel */
-  color: #fff;
+  padding: 4rem 0; /* Add padding for different screen sizes */
 }
 
+/* --- The Glass Card Effect --- */
 .hero-content {
-  max-width: 700px;
+  /* Card Background & Blur */
+  background: rgba(146, 131, 87, 0.55); /* Dark, semi-transparent background */
+  backdrop-filter: blur(6px);      /* The core of the glass effect! */
+  -webkit-backdrop-filter: blur(8px); /* For Safari compatibility */
+
+  /* Card Shape & Edges */
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(246, 239, 239, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* Text & Layout */
+  max-width: 750px;
+  color: #ffffff;
+  text-align: center; /* Center the text inside the card */
+
+  /* Modern Animation */
+  animation: fadeInUp 0.9s ease-out forwards;
+  margin-top: 9rem;
+  margin-left: 9.5rem;
 }
 
+/* Heading styles with a subtle shadow for readability */
 .hero h1 {
   font-size: 3.5rem;
+  font-style: ;
   font-weight: 800;
   line-height: 1.2;
-}
-.hero h1 span { color: #f59e0b; }
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 1.5rem;
-  color: #e5e7eb;
-  max-width: 550px;
-}
-.highlight {
-  color: #f59e0b;
-  font-weight: 600;
-}
-.highlight-alt {
-  color: #7c3aed;
-  font-weight: 600;
-}
-.cta-text {
-  font-weight: 500;
-  font-size: 1.2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
 }
 
+/* The golden span for 'Anjali DAO' */
+.hero h1 span {
+  color: #f59e0b;
+}
+
+/* Keyframes for the fade-in-up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* MODIFIED: Generic section styles for consistency */
 .donation-section, .about-section, .contact-section {

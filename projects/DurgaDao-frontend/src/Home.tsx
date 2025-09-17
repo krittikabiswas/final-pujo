@@ -119,7 +119,7 @@ const Home: React.FC = () => {
       {/* Sticky Nav Bar */}
       <nav className="nav-bar">
         <div className="container nav-container">
-          <h2 className="logo">🌸 Onjoli DAO</h2>
+          <h2 className="logo"> 🪔 Anjali DAO</h2>
           <div className="nav-links">
             <a href="#hero">Home</a>
             <a href="#donate">Donate</a>
@@ -130,20 +130,20 @@ const Home: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <h1>
-              Welcome to <span>Onjoli DAO</span>
-            </h1>
-            <p>
-              Donate <span className="highlight">ALGO</span> to participate in the festival and receive{" "}
-              <span className="highlight-alt">ANJ governance tokens</span>.
-            </p>
-            <p className="cta-text">🌟 Be part of the community revolution!</p>
-          </div>
-        </div>
-      </section>
+<section id="hero" className="hero">
+  <div className="container">
+    <div className="hero-content">
+      <h1>
+        Welcome to <span>Anjali DAO</span>
+      </h1>
+      <p>
+        Donate <span className="highlight">ALGO</span> to participate in the festival and receive{" "}
+        <span className="highlight-alt">ANJ governance tokens</span>.
+      </p>
+      <p className="cta-text">🌟 Be part of the community revolution!</p>
+    </div>
+  </div>
+</section>
 
       {/* Donation Section */}
       <section id="donate" className="donation-section">
