@@ -1,0 +1,41 @@
+/* src/components/BalanceInfo.css */
+.balance-info-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.balance-info-card h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.balance-info-card .balance-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c147e9; /* A vibrant color for the balance */
+  margin: 0;
+}
+
+.balance-info-card .balance-amount span {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #888;
+  margin-left: 8px;
+}
+
+.balance-info-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  /* margin-top: 24px; */ /* REMOVE THIS LINE */
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+}

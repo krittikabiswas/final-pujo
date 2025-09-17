@@ -2,6 +2,8 @@
 import { useWallet } from '@txnlab/use-wallet-react'
 import React, { useState } from 'react'
 import * as algosdk from 'algosdk'
+import BalanceInfo from './components/Balance'
+import Voting from './components/Voting';
 
 // --- DAO Imports ---
 import ConnectWallet from './components/ConnectWallet'
@@ -80,6 +82,11 @@ const Home: React.FC = () => {
 
       await algosdk.waitForConfirmation(algodClient, paymentTxid, 4)
 
+      const storageKey = `anjali-dao-donation-${activeAddress}`
+      const currentDonation = Number(sessionStorage.getItem(storageKey)) || 0
+      const newTotalDonation = currentDonation + donationAmount
+      sessionStorage.setItem(storageKey, newTotalDonation.toString())
+
       const donateMethod = new algosdk.ABIMethod({
         name: 'donate',
         args: [],
@@ -152,6 +159,7 @@ const Home: React.FC = () => {
       {/* Column 1: The Donation Card */}
       <div className="donation-form-container">
         <div className="donation-card">
+
           <h3 className="donation-title">Make Your Offering</h3>
           {!activeAddress ? (
             <button className="btn btn-primary connect-btn" onClick={toggleWalletModal}>
@@ -198,6 +206,7 @@ const Home: React.FC = () => {
   </div>
   <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
 </section>
+{activeAddress && <Voting />}
 
       {/* Contact Section */}
       <section id="contact" className="section">
@@ -219,9 +228,15 @@ const Home: React.FC = () => {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Anjali DAO. A new era of tradition.</p>
+          <p>&copy; {new Date().getFullYear()} Anjali DAO. A new era where tradition meets technology.</p>
         </div>
       </footer>
+           {/* The sticky container goes HERE, INSIDE the main div */}
+      {activeAddress && (
+        <div className="sticky-balance-container">
+          <BalanceInfo />
+        </div>
+      )}
     </div>
   )
 }

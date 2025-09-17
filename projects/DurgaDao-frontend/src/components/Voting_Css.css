@@ -1,0 +1,86 @@
+/* src/components/Voting.css */
+.voting-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.poll-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.poll-question {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.poll-cost {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c147e9;
+  background-color: #f8eaff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.poll-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+.poll-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.poll-option input[type="radio"] {
+  accent-color: #c147e9;
+}
+
+.poll-card .btn {
+  width: 100%;
+  margin-top: auto; /* Aligns button to the bottom */
+}
+/* Add these styles to src/components/Voting.css */
+
+.poll-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.poll-cost {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c147e9;
+  background-color: #f8eaff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin: 0; /* Remove default margin */
+}
+
+.poll-deadline {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0; /* Remove default margin */
+}
