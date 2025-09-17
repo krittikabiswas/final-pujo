@@ -5,75 +5,178 @@ html, body, .main-container {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  background-color: #111827; /* Base background for consistency */
 }
 
-/* Sticky Nav */
+/* --- ADDITION: Master Content Container --- */
+.container {
+  width: 100%;
+  max-width: 1100px; /* Controls max content width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+/* MODIFIED: Sticky Nav with blur and container */
 .nav-bar {
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(17, 24, 39, 0.8); /* Dark, semi-transparent */
+  backdrop-filter: blur(10px); /* Glassmorphic effect */
+  padding: 1rem 0; /* Vertical padding */
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  z-index: 1000;
 }
 
 .logo {
   color: #fff;
   font-weight: 700;
   font-size: 1.25rem;
+  margin: 0;
 }
+
+/* --- Uniform & Modern Navigation Button Styles --- */
 
 .nav-links a {
-  color: #f1f1f1;
-  margin-left: 1.5rem;
+  /* Spacing & Shape */
+  padding: 0.6rem 1.2rem;
+  margin-left: 0.5rem;
+  border-radius: 8px; /* A modern, slightly rounded rectangle */
+
+  /* Text & Color */
+  color: #d1d5db;
+  background-color: transparent; /* Start with no background */
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
-}
-.nav-links a:hover {
-  color: #f59e0b;
+
+  /* Subtle border for a clean, defined look */
+  border: 1px solid rgba(245, 12, 12, 0.25);
+
+  /* Smooth Animation */
+  transition: all 0.3s ease;
 }
 
-/* Hero Section with Background Image */
+/* --- Hover effect for ALL buttons --- */
+.nav-links a:hover {
+  background-color: #f0a51a; /* Primary purple fills the button on hover */
+  border-color: #7c3aed;     /* Match border to the new background */
+  color: #6f0404;
+  transform: translateY(-2px); /* Lifts the button slightly */
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4); /* Adds a vibrant glow */
+}
+/* MODIFIED: Hero Section with improved content box */
 .hero {
-  min-height: 100vh;
+  min-height: 90vh; /* Slightly reduced height */
   background: url("../assets/durga.jpg") no-repeat center center/cover;
+  background-attachment: fixed; /* Parallax effect */
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left; /* Switched to left align for a more modern feel */
   color: #fff;
-  padding: 3rem 1rem;
+}
+
+.hero-content {
+  max-width: 700px;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
+  line-height: 1.2;
 }
 .hero h1 span { color: #f59e0b; }
-.hero p { font-size: 1.2rem; margin-top: 1rem; }
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  color: #e5e7eb;
+  max-width: 550px;
+}
+.highlight {
+  color: #f59e0b;
+  font-weight: 600;
+}
+.highlight-alt {
+  color: #7c3aed;
+  font-weight: 600;
+}
+.cta-text {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
 
-/* Gradient background for other sections */
+
+/* MODIFIED: Generic section styles for consistency */
 .donation-section, .about-section, .contact-section {
-  padding: 4rem 2rem;
+  padding: 6rem 0; /* Increased vertical padding, horizontal is handled by container */
   text-align: center;
   background: linear-gradient(135deg, #1f2937, #111827, #000000);
   color: #f1f1f1;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Generic heading style for sections */
+.about-section h2, .contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Generic paragraph style for sections */
+.about-section p, .contact-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  max-width: 750px; /* Keeps text readable */
+  margin: 0 auto 2rem auto;
+}
+
+
+/* --- Donation Card Styles (Largely unchanged) --- */
 .donation-card {
-  background: rgba(255,255,255,0.92);
-  padding: 2rem;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
   border-radius: 1rem;
-  max-width: 450px;
+  max-width: 500px;
   margin: auto;
-  color: #111;
+  color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Buttons */
+/* --- ADDITION: Message box for success/error feedback --- */
+.message-box {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+}
+.message-box.success {
+  background-color: rgba(22, 163, 74, 0.2);
+  border-color: #16a34a;
+  color: #4ade80;
+}
+.message-box.error {
+  background-color: rgba(220, 38, 38, 0.2);
+  border-color: #dc2626;
+  color: #f87171;
+}
+
+/* Button Styles */
 .btn {
   margin: 0.5rem;
   padding: 0.85rem 1.8rem;
@@ -82,19 +185,45 @@ html, body, .main-container {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: none;
 }
-.btn:hover { transform: translateY(-2px) scale(1.04); }
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.04);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 .btn-primary {
   background: linear-gradient(135deg, #7c3aed, #6d28d9);
   color: #fff;
-  border: none;
 }
-.btn-primary:hover { background: linear-gradient(135deg, #6d28d9, #5b21b6); }
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6d28d9, #5b21b6);
+}
 
 .btn-secondary {
   background: linear-gradient(135deg, #14b8a6, #0d9488);
   color: #fff;
-  border: none;
 }
-.btn-secondary:hover { background: linear-gradient(135deg, #0d9488, #0f766e); }
+.btn-secondary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+}
+
+/* --- Other Donation Card Element Styles (Unchanged) --- */
+.donation-title { font-size: 2rem; font-weight: 700; color: #fff; margin: 0; }
+.donation-subtitle { font-size: 1rem; margin: -1.2rem 0 0.5rem 0; color: #a0aec0; }
+.wallet-address { background-color: rgba(0, 0, 0, 0.25); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.9rem; font-family: 'Courier New', Courier, monospace; color: #a0aec0; }
+.wallet-address span { color: #f1f1f1; font-weight: 600; }
+.input-group { position: relative; width: 100%; }
+.donation-input { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid #4a5568; border-radius: 0.8rem; padding: 0.85rem 4.5rem 0.85rem 1rem; font-size: 1rem; color: #fff; font-weight: 500; box-sizing: border-box; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.donation-input:focus { outline: none; border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.4); }
+.donation-input::placeholder { color: #718096; }
+.donation-input::-webkit-outer-spin-button, .donation-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.donation-input[type=number] { -moz-appearance: textfield; }
+.input-currency { position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); color: #a0aec0; font-weight: 600; pointer-events: none; }
+.btn-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; width: 100%; }
+.info-text { font-size: 0.85rem; color: #a0aec0; max-width: 90%; line-height: 1.5; }
+.connect-btn { padding: 1rem 2rem; font-size: 1.1rem; }
+.sr-only { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
