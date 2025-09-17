@@ -7,17 +7,31 @@ import './Voting_Css.css';
 const polls = [
   {
     id: 1,
-    question: 'What should be the theme for the next community event?',
-    options: ['Cultural Heritage', 'Modern Tech Fair', 'Eco-Friendly Initiative'],
-    cost: 2,
-    deadline: 'Closes: September 25, 2025', // <-- DEADLINE ADDED
+    question: 'What should be the theme for this year\'s Pandal?',
+    options: ['Traditional Zamindar Bari', 'Modern Artistic Abstract', 'Eco-Friendly Village'],
+    cost: 10,
+    deadline: 'Closes: September 30, 2025',
   },
   {
     id: 2,
-    question: 'Which charity should receive next month\'s treasury donation?',
-    options: ['Local Education Fund', 'Animal Welfare Shelter', 'Global Health Org'],
+    question: 'Which cultural event should we host on Ashtami evening?',
+    options: ['Classical Dance Drama', 'Modern Bengali Band', 'Traditional Folk Music (Baul)'],
     cost: 5,
-    deadline: 'Closes: October 5, 2025', // <-- DEADLINE ADDED
+    deadline: 'Closes: October 8, 2025',
+  },
+  {
+    id: 3,
+    question: 'What style should the Durga Pratima (Idol) be?',
+    options: ['Classic Ekchala Style', 'Terracotta Bankura Style', 'Contemporary Dokra Metalwork'],
+    cost: 15,
+    deadline: 'Closes: October 3, 2025',
+  },
+    {
+    id: 4,
+    question: 'What special item should be added to the Bhog (community feast)?',
+    options: ['Chhanar Payesh (Dessert)', 'Mochar Ghonto (Banana Flower Curry)', 'Begun Bhaja (Fried Eggplant)'],
+    cost: 2,
+    deadline: 'Closes: October 12, 2025',
   },
 ];
 

@@ -84,3 +84,36 @@
   color: #888;
   margin: 0; /* Remove default margin */
 }
+
+/* src/components/Voting.css */
+.poll-card {
+  /* Existing styles */
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e0e0e0; /* Keeping a subtle border */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow */
+  display: flex;
+  flex-direction: column;
+
+  /* --- Puja-related Gradient Background --- */
+  background: linear-gradient(135deg, #FF9933, #FF6666); /* Saffron Orange to Auspicious Red */
+  color: #fff; /* Ensure text is readable on the dark gradient */
+}
+
+/* You might also want to adjust the text color for headings and costs to be white for better contrast */
+.poll-card .poll-question,
+.poll-card .poll-cost,
+.poll-card .poll-deadline,
+.poll-card .poll-option {
+  color: #fff; /* Make text white for readability on the gradient */
+}
+
+/* Adjust the poll-cost background to be semi-transparent white */
+.poll-card .poll-cost {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+}
+
+/* You might want to adjust the radio button accent color if needed */
+.poll-option input[type="radio"] {
+  accent-color: #ffd700; /* Gold accent for radio buttons */
+}
